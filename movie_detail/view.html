@@ -1,0 +1,16 @@
+<div class="jumbotron">
+  <h1>{{data.title}}</h1>
+  <img ng-src="{{data.images.large}}" alt="">
+  <p>{{data.summary}}</p>
+  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
+</div>
+
+
+
+
+<div class="mask" ng-if="loading">
+	<div class="spinner">
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+	</div>
+</div>

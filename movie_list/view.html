@@ -1,0 +1,41 @@
+<h1 class="page-header">{{title}}</h1>
+<h2 ng-if="message">{{message}}</h2>
+<div class="list-group">
+  <a href="#/subject/{{d.id}}" class="list-group-item" ng-repeat="d in subjects">
+  	<span class="badge">豆瓣评分：{{d.rating.average}}</span>
+    <div class="media">
+	  <div class="media-left">
+	      <img class="media-object" ng-src="{{d.images.small}}" alt="{{d.title}}" height="200">
+	  </div>
+	  <div class="media-body">
+	    <h2 class="media-heading">{{d.title}}</h2>
+	    <p><span>导演：</span>
+	    <span ng-repeat="daoyan in d.directors">
+	    {{daoyan.name}}
+	    <span ng-if="!$last">、</span>
+		</span></p>
+	    <p><span>类型：</span><span>{{d.genres.join("、")}}</span></p>
+	    <p>上映年份：<span>{{d.year}}年</span></p>
+	    <p>主演：<span ng-repeat="zhuyan in d.casts">{{zhuyan.name}}{{!$last?'、':''}}</span></p>
+	  </div>
+	</div>
+  </a>
+<div ng-show="total===0?true:total">
+  <p>总共：{{total}}条记录 <span> 第{{currentPage}}/{{totalPages}}页</span></p>
+  <nav aria-label="...">
+	  <ul class="pager">
+	    <li ng-class="{disabled:currentPage<=1}"><a ng-click="go(currentPage-1)">上一页</a></li>
+	    <li ng-class="{disabled:currentPage>=totalPages}"><a ng-click="go(currentPage+1)">下一页</a></li>
+	  </ul>
+  </nav>
+</div>
+
+</div>
+
+
+<div class="mask" ng-if="total===0?false:!total">
+	<div class="spinner">
+		<div class="dot1"></div>
+		<div class="dot2"></div>
+	</div>
+</div>
